@@ -40,6 +40,9 @@
 <script>
 export default {
   name: 'HelloWorld',
+  mounted() {
+    alert('Senha: Adm \n Email: Adm')
+  },
   data() {
     return {
       dialog: true,
