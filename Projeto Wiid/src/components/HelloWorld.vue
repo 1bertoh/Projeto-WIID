@@ -12,7 +12,7 @@
           <v-container>
             <v-row justify='center'>
               <v-col cols="12">
-                <v-text-field label="Email*"
+                <v-text-field label="User*"
                 v-model="email"
                 required></v-text-field>
               </v-col>
@@ -24,6 +24,11 @@
                 @click:append="visibility = !visibility"
                 required></v-text-field>
               </v-col>
+              <v-alert type="warning"
+              dense
+              :value="alertLogin">
+                Dados incorretos
+              </v-alert>
             </v-row>
           </v-container>
         </v-card-text>
@@ -60,12 +65,16 @@ export default {
       userEmail: 'Adm',
       userSenha: 'Adm',
       visibility: true,
+      alertLogin: false,
     };
   },
   methods: {
     validacao() {
       if (this.userEmail === this.email && this.userSenha === this.senha) {
+        this.alertLogin = false;
         this.$router.push({ path: 'user' }) // -> /telaLogada
+      } else {
+        this.alertLogin = true;
       }
     },
     verSenha() {

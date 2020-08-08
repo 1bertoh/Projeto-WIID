@@ -141,7 +141,7 @@
                   <v-list-item-title>Mudar status</v-list-item-title>
                 </v-list-item>
                 <v-list-item to="/">
-                  <v-list-item-title>Logout</v-list-item-title>
+                  <v-list-item-title>Logout <v-icon>exit_to_app</v-icon></v-list-item-title>
                 </v-list-item>
               </v-list>
             </v-menu>
