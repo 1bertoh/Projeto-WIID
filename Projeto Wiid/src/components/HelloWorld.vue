@@ -18,8 +18,10 @@
               </v-col>
               <v-col cols="10" align='center'>
                 <v-text-field label="Password*"
-                type="password"
+                :type="visibility ? 'password' : 'text'"
                 v-model="senha"
+                :append-icon="visibility ? 'visibility_off' : 'visibility'"
+                @click:append="visibility = !visibility"
                 required></v-text-field>
               </v-col>
             </v-row>
@@ -27,7 +29,8 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="validacao">Entrar</v-btn>
+          <v-btn color="blue darken-1" text
+          @click="validacao">Entrar</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -42,6 +45,12 @@ export default {
   name: 'HelloWorld',
   mounted() {
     alert('Senha: Adm \n Email: Adm')
+    document.addEventListener('keypress', (e) => {
+      const keyName = e.key;
+      if (keyName === 'Enter') {
+        this.validacao();
+      }
+    });
   },
   data() {
     return {
@@ -50,6 +59,7 @@ export default {
       senha: '',
       userEmail: 'Adm',
       userSenha: 'Adm',
+      visibility: true,
     };
   },
   methods: {
@@ -57,7 +67,10 @@ export default {
       if (this.userEmail === this.email && this.userSenha === this.senha) {
         this.$router.push({ path: 'user' }) // -> /telaLogada
       }
-    }
+    },
+    verSenha() {
+      alert('oi')
+    },
   }
 };
 </script>
